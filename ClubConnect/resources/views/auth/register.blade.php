@@ -28,6 +28,29 @@
                 <x-label for="address" value="{{ __('Address') }}" />
                 <x-input id="address" class="block mt-1 w-full" type="text" name="address" :value="old('address')" required autocomplete="username" />
             </div>
+            <div class="mt-4">
+                <label class="block font-medium text-sm text-gray-700">
+                    User Type
+                </label>
+                <div class="mt-2">
+                    <label class="inline-flex items-center">
+                        <input type="radio" class="form-radio" name="usertype" value="1" checked>
+                        <span class="ml-2">Scout</span>
+                    </label>
+                    <label class="inline-flex items-center ml-6">
+                        <input type="radio" class="form-radio" name="usertype" value="2">
+                        <span class="ml-2">Club</span>
+                    </label>
+                    <label class="inline-flex items-center ml-6">
+                        <input type="radio" class="form-radio" name="usertype" value="3">
+                        <span class="ml-2">Coach</span>
+                    </label>
+                    <label class="inline-flex items-center ml-6">
+                        <input type="radio" class="form-radio" name="usertype" value="4">
+                        <span class="ml-2">Fan</span>
+                    </label>
+                </div>
+            </div>
 
             <div class="mt-4">
                 <x-label for="password" value="{{ __('Password') }}" />
