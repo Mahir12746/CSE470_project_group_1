@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,3 +28,9 @@ Route::middleware([
 });
 
 route::get('/redirect',[HomeController::class,'redirect']);
+
+route::get('/add_player_page',[AdminController::class,'add_player_page']);
+
+route::post('/add_player_info',[AdminController::class,'add_player_info']);
+
+route::get('/track_performance_page',[AdminController::class,'track_performance_page']);
