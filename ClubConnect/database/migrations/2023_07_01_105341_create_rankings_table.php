@@ -37,4 +37,14 @@ return new class extends Migration
     {
         Schema::dropIfExists('rankings');
     }
+
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('rankings');
+    }
 };
+//Modified

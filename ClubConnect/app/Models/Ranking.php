@@ -9,3 +9,5 @@ class Ranking extends Model
 {
     use HasFactory;
 }
+
+
