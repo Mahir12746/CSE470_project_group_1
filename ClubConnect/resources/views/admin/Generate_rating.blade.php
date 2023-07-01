@@ -134,9 +134,18 @@
                 {{ session()->get('message') }}
             </div>
             @endif
+        
+        @if(session()->has('error'))
+        <div class="alert alert-danger alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            {{ session()->get('error') }}
+        </div>
+        @endif
 
 
-        <div class="container">
+      <div class="container">
 
 
   <h1 class="title">Generate Rating</h1>
@@ -144,6 +153,11 @@
   <form action="{{ url('/find_player_ranking') }}" method="post" enctype="multipart/form-data" class="form">
     @csrf
     
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input class="form-control" type="text" name="name" id="name" placeholder="Enter player's Name" required>
+    </div>
+
     <div class="form-group">
       <label for="name">Age</label>
       <input class="form-control" type="number" name="age" id="age" placeholder="Enter player's age" required>
@@ -183,11 +197,6 @@
       <label for="experience">Minutes Played</label>
       <input class="form-control" type="number" name="minutes_played" id="minutes_played" placeholder="Enter player's number of minutes played" required>
     </div>
-
-    <div class="form-group">
-        <label for="pimage">Image</label>
-        <input type="file" name="pimage" id="pimage" required>
-      </div>
       
       <div class="form-group">
         <button type="submit" class="btn btn-primary">Find Rating</button>
@@ -202,6 +211,17 @@
   
   <!--  Header Start -->
       @include('admin.javascript')
+
+
+
+      <!-- Your HTML code -->
+
+      <!-- Include the Bootstrap JavaScript file (jQuery is required) -->
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+
       <!--  Header End -->
 </body>
 

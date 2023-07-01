@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('rankings', function (Blueprint $table) {
             $table->id();
-
+            $table->string('name');
             $table->string('age')->nullable();
             $table->string('height')->nullable();
             $table->string('weight')->nullable();
@@ -22,6 +22,8 @@ return new class extends Migration
             $table->string('goals')->nullable();
             $table->string('assist')->nullable();
             $table->string('minutes_played')->nullable();
+            $table->string('rank')->nullable();
+            $table->string('ranking_value')->nullable();
 
 
             $table->timestamps();
@@ -36,3 +38,5 @@ return new class extends Migration
         Schema::dropIfExists('rankings');
     }
 };
+
+//Modified
