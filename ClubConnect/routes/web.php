@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ClubController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,3 +41,13 @@ Route::post('/update_performance/{id}', [AdminController::class, 'update_perform
 route::get('/generate_rating_page',[AdminController::class,'generate_rating_page']);
 
 route::post('/find_player_ranking',[AdminController::class,'find_player_ranking']);
+
+Route::get('/my_club_page',[ClubController::class,'my_club_page']);
+
+Route::get('/create_club_page',[ClubController::class,'create_club_page']);
+
+Route::post('/create_club', [ClubController::class, 'create_club'])->name('create_club');
+
+Route::get('/edit_club_page',[ClubController::class,'edit_club_page']);
+
+

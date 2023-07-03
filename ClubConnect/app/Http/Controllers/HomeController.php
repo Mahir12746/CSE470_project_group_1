@@ -24,6 +24,10 @@ class HomeController extends Controller
     	{
     		return view('admin.home');
     	}
+        elseif ($usertype=='2')
+    	{
+    		return view('club.home');
+    	}
         else 
         {
             return view('home.fanpage');
