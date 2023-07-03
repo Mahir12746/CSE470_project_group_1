@@ -50,6 +50,24 @@ class AdminController extends Controller
         return view('admin.Track_Performance', compact('players'));
     }
 
+    public function update_performance(Request $request, $id)
+    {
+        $player = Player::find($id);
+        if ($player) {
+            if ($request->has('goals')) {
+                $player->goals = $request->goals;
+            }
+            if ($request->has('assists')) {
+                $player->assists = $request->assists;
+            }
+            if ($request->has('minsplayed')) {
+                $player->minsplayed = $request->minsplayed;
+            }
+            $player->save();
+        }
+        return redirect()->back()->with('message', 'Performance Updated Successfully');
+    }
+
     public function generate_rating_page()
     {
         return view('admin.Generate_rating');
