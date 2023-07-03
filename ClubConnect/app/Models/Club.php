@@ -16,5 +16,9 @@ class Club extends Model
     
     protected $table = 'clubs';
 
+    public function players()
+    {
+        return $this->belongsToMany(Player::class, 'club_players', 'club_id', 'player_id');
+    }
     
 }

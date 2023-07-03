@@ -8,6 +8,11 @@ use Illuminate\Support\Facades\Auth;
 
 use App\Models\Club;
 
+use App\Models\Player;
+
+use App\Models\ClubPlayer;
+
+
 class ClubController extends Controller
 {
     public function my_club_page()
@@ -52,14 +57,22 @@ class ClubController extends Controller
 
     return redirect(url('/my_club_page'))->with('message', 'Club Created Successfully');
 }
-public function edit_club_page()
+    public function edit_club_page()
     {
     	return view('club.edit_club_page');
     }
-
- 
-
     
+    public function show_player_page()
+{
+    $players = Player::all();
+    return view('club.show_player_page', compact('players'));
+}
+
+    public function squad_page()
+{
+    return view('club.squad_page');
+}
+ 
 
 }
 
