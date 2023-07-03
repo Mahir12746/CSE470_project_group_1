@@ -33,8 +33,8 @@ route::get('/add_player_page',[AdminController::class,'add_player_page']);
 
 route::post('/add_player_info',[AdminController::class,'add_player_info']);
 
-Route::get('/track_performance_page', [AdminController::class, 'track_performance_page'])->name('track_performance_page');
-
-Route::post('/update_performance/{id}', [AdminController::class, 'update_performance'])->name('update_performance');
+route::get('/track_performance_page',[AdminController::class,'track_performance_page']);
 
 route::get('/generate_rating_page',[AdminController::class,'generate_rating_page']);
+
+route::post('/find_player_ranking',[AdminController::class,'find_player_ranking']);
