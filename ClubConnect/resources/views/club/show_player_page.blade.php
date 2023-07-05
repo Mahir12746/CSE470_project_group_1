@@ -44,6 +44,7 @@
                     <th>Goals</th>
                     <th>Assists</th>
                     <th>Mins Played</th>
+                    <th>Club</th>
                     <th>Action</th> <!-- Add an action column -->
                   </tr>
                 </thead>
@@ -61,7 +62,12 @@
                     <td>{{ $player->goals }}</td>
                     <td>{{ $player->assists }}</td>
                     <td>{{ $player->minsplayed }}</td>
-                    <td><!-- Action column content --></td>
+                    <td>{{ $player->club }}</td>
+                    <td><form action="{{ route('submitBid', $player->id)}}" method="POST">
+                      @csrf
+                      <input type="number" name="bid_number" placeholder="Place Bid" required>
+                      <button type="submit">Submit Bid</button>
+                  </form></td>
                   </tr>
                   @endforeach
                 </tbody>

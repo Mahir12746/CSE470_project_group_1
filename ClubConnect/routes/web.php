@@ -54,5 +54,18 @@ Route::get('/show_player_page',[ClubController::class,'show_player_page']);
 
 Route::get('/squad_page',[ClubController::class,'squad_page']);
 
+Route::post('/submitbid/{player}', [ClubController::class, 'submitbid'])->name('submitBid');
+
+Route::get('/showPendingBids',[AdminController::class,'showPendingBids']);
+
+Route::post('/acceptBid/{bid}', [AdminController::class, 'acceptBid'])->name('acceptBid');
+
+Route::post('/declineBid/{bid}', [AdminController::class, 'declineBid'])->name('declineBid');
+
+Route::get('/bid_status', [ClubController::class, 'bidStatus'])->name('bid_status')->middleware('auth');
+
+
+
+
 
 

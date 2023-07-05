@@ -2,15 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
-use Illuminate\Support\Facades\Auth;
-
 use App\Models\Club;
 
 use App\Models\Player;
 
+use App\Models\ClubBid;
+
 use App\Models\ClubPlayer;
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
+
 
 
 class ClubController extends Controller
@@ -72,7 +75,35 @@ class ClubController extends Controller
 {
     return view('club.squad_page');
 }
- 
+
+
+public function submitBid(Request $request, $playerId)
+{
+    $clubId = auth()->user()->id;
+
+    $bidNumber = $request->input('bid_number');
+
+    ClubBid::create([
+        'club_id' => $clubId,
+        'player_id' => $playerId,
+        'bid_number' => $bidNumber,
+    ]);
+
+    return redirect()->back()->with('message', 'Bid submitted successfully');
+}
+
+
+public function bidStatus()
+{
+    $user = Auth::user();
+    $club = Club::where('user_id', $user->id)->first();
+    $bids = ClubBid::where('club_id', $club->user_id )->get();
+
+    return view('club.bid_status', compact('bids'));
+}
+
+
+
 
 }
 

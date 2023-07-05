@@ -22,6 +22,8 @@ return new class extends Migration
             $table->string('goals')->nullable();
             $table->string('assist')->nullable();
             $table->string('minutes_played')->nullable();
+            $table->string('rank')->nullable();
+            $table->string('ranking_value')->nullable();
 
 
             $table->timestamps();

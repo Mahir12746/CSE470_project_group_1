@@ -201,6 +201,11 @@
     </div>
 
     <div class="form-group">
+      <label for="club">Player's Club</label>
+      <input class="form-control" type="text" name="club" id="club" placeholder="Type N/A if not in a club" required>
+    </div>
+
+    <div class="form-group">
       <label for="pimage">Image</label>
       <input type="file" name="pimage" id="pimage" required>
     </div>
