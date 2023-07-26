@@ -6,15 +6,20 @@ use App\Models\Player;
 
 use App\Models\ClubBid;
 
+use App\Models\Club;
+
 use App\Models\Ranking;
+
 use Illuminate\Http\Request;
+
 use Illuminate\Support\Facades\Session;
 
 class AdminController extends Controller
 {
     public function add_player_page()
     {
-    	return view('admin.Add_Player');
+        $clubs = Club::all(); 
+        return view('admin.Add_Player',compact('clubs'));
     }
 
     public function add_player_info(Request $request)
@@ -175,6 +180,11 @@ class AdminController extends Controller
 
         Session::flash('message', 'Bid declined');
         return redirect()->back();
+    }
+
+    public function match_page()
+    {
+    	return view('admin.match_page');
     }
 
 

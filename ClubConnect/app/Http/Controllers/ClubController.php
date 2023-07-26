@@ -67,13 +67,33 @@ class ClubController extends Controller
     
     public function show_player_page()
 {
-    $players = Player::all();
+    $user = Auth::user();
+    $club = Club::where('user_id', $user->id)->first();
+
+    if ($club) {
+        // If the user is associated with a club, get the players of that club
+        $players = $club->players;
+    } else {
+        // If the user is not associated with any club, show an empty array
+        $players = [];
+    }
+
     return view('club.show_player_page', compact('players'));
 }
 
     public function squad_page()
 {
-    $players = Player::all(); 
+    $user = Auth::user();
+    $club = Club::where('user_id', $user->id)->first();
+
+    if ($club) {
+        // If the user is associated with a club, get the players of that club
+        $players = $club->players;
+    } else {
+        // If the user is not associated with any club, show an empty array
+        $players = [];
+    }
+
     return view('club.squad_page',compact('players'));
 }
 
