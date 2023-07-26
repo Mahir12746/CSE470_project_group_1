@@ -36,6 +36,16 @@
                 <span class="hide-menu">My Club</span>
               </a>
             </li>
+
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="{{route('bid_status')}}" aria-expanded="false">
+                <span>
+                  <i class="ti ti-article"></i>
+                </span>
+                <span class="hide-menu">View Bid Status</span>
+              </a>
+            </li>
+
             <li class="sidebar-item">
               <a class="sidebar-link" href="{{url('/show_player_page')}}" aria-expanded="false">
                 <span>

@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
 use App\Models\Player;
 
+use App\Models\ClubBid;
+
 use App\Models\Ranking;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class AdminController extends Controller
 {
@@ -24,6 +26,7 @@ class AdminController extends Controller
     $player->weight = $request->weight;
     $player->contact = $request->contact;
     $player->address = $request->address;
+    $player->club = $request->club;
     $player->position = $request->position;
     $player->expeirence = $request->experience;
     $player->goals = $request->goals ?: 0;
@@ -144,5 +147,36 @@ class AdminController extends Controller
     {
     	return view('admin.sponsor_page');
     }
+
+
+    public function showPendingBids()
+    {
+        $pendingBids = ClubBid::where('is_accepted', false)->get();
+
+        return view('admin.pending_bids', ['bids' => $pendingBids]);
+    }
+
+
+    public function acceptBid($bidId)
+    {
+        $bid = ClubBid::findOrFail($bidId);
+        $bid->is_accepted = true;
+        $bid->save();
+
+        Session::flash('message', 'Bid accepted');
+        return redirect()->back();
+    }
+
+    public function declineBid($bidId)
+    {
+        $bid = ClubBid::findOrFail($bidId);
+        $bid->delete();
+
+
+        Session::flash('message', 'Bid declined');
+        return redirect()->back();
+    }
+
+
 
 }
