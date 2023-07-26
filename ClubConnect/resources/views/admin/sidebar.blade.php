@@ -53,7 +53,7 @@
               </a>
             </li>
             <li class="sidebar-item">
-              <a class="sidebar-link" href="#" aria-expanded="false">
+              <a class="sidebar-link" href="{{url('/sponsor_page')}}" aria-expanded="false">
                 <span>
                   <i class="ti ti-file-description"></i>
                 </span>

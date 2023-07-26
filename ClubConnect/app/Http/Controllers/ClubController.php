@@ -70,7 +70,8 @@ class ClubController extends Controller
 
     public function squad_page()
 {
-    return view('club.squad_page');
+    $players = Player::all(); 
+    return view('club.squad_page',compact('players'));
 }
  
 

@@ -139,5 +139,10 @@ class AdminController extends Controller
             return redirect()->back()->with('error', 'The player does not exist in our database.');
         }
     }
+    
+    public function sponsor_page()
+    {
+    	return view('admin.sponsor_page');
+    }
 
 }

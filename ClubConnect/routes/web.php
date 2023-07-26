@@ -54,5 +54,9 @@ Route::get('/show_player_page',[ClubController::class,'show_player_page']);
 
 Route::get('/squad_page',[ClubController::class,'squad_page']);
 
+Route::get('/sponsor_page',[AdminController::class,'sponsor_page']);
+
+
+
 
 
