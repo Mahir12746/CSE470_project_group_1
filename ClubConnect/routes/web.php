@@ -66,7 +66,11 @@ Route::post('/declineBid/{bid}', [AdminController::class, 'declineBid'])->name('
 
 Route::get('/bid_status', [ClubController::class, 'bidStatus'])->name('bid_status')->middleware('auth');
 
-Route::get('/match_page',[AdminController::class,'match_page']);
+Route::get('/create_match', [AdminController::class, 'create_match_page'])->name('admin.create_match_page');
+
+Route::post('/store_match', [AdminController::class, 'store_match'])->name('admin.store_match');
+
+Route::get('/matches', [AdminController::class, 'view_matches'])->name('admin.view_matches');
 
 
 

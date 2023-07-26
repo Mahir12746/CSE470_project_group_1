@@ -25,6 +25,7 @@ return new class extends Migration
             $table->string('goals')->nullable();
             $table->string('assists')->nullable();
             $table->string('minsplayed')->nullable();
+            $table->string('club')->nullable();
 
             $table->timestamps();
         });
