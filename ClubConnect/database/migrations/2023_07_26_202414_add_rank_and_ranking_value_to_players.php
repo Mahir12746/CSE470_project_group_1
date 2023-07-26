@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('club_bids', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+        Schema::table('players', function (Blueprint $table) {
+            $table->integer('rank')->after('pimage'); 
+            $table->integer('ranking_value')->after('rank'); 
         });
     }
 
@@ -22,6 +22,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('club_bids');
+        Schema::table('players', function (Blueprint $table) {
+            //
+        });
     }
 };

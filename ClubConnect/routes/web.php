@@ -64,6 +64,9 @@ Route::post('/declineBid/{bid}', [AdminController::class, 'declineBid'])->name('
 
 Route::get('/bid_status', [ClubController::class, 'bidStatus'])->name('bid_status')->middleware('auth');
 
+Route::get('/print_pdf/{id}',[ClubController::class,'print_pdf']);
+
+Route::get('/report_generate',[ClubController::class,'report_generate']);
 
 
 
