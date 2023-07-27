@@ -12,6 +12,8 @@ use App\Models\ClubPlayer;
 
 use App\Models\MatchRequest;
 
+use PDF;
+
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Auth;
@@ -153,7 +155,39 @@ public function send_match_request(Request $request)
     }
 
 
+public function print_pdf($id)
+{
+    // Step 1: Access the clubs table to get the club_name based on the given $id
+    $club = Club::where('user_id', $id)->first();
+
+    // If the club with the given $id is not found, you can handle the error accordingly.
+    if (!$club) {
+        return redirect()->back()->with('error', 'Club not found.');
+    }
+
+    // Store the club_name in a variable
+    $clubName = $club->club_name;
+
+    // Step 2: Access the players table to get the players associated with the club
+    $players = Player::where('club', $clubName)->get();
+
+    // Step 3: Generate the PDF with the player details
+    $pdf = PDF::loadView('club.pdf', compact('players'));
+    return $pdf->download('report_details.pdf');
+}
+
+
+public function report_generate()
+{
+    return view('club.report_generate');
+}
+
+
+public function getCurrentUserId()
+{
+    $userId = auth()->user()->id;
+    return $userId;
+}
 
 
 }
-

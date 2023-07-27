@@ -28,6 +28,19 @@ class AdminController extends Controller
 
     public function add_player_info(Request $request)
     {
+    
+
+    $experience = $request->experience;
+    $goals = $request->goals;
+    $assists = $request->assist;
+    $minutesPlayed = $request->minutes_played;
+
+    $rankingValue = $experience + ($goals * 2) + ($assists * 1.5) + ($minutesPlayed / 90);
+
+    $newRankingValue = $rankingValue;
+    
+
+
     $player = new Player;
     $player->name = $request->name;
     $player->age = $request->age;
@@ -41,6 +54,8 @@ class AdminController extends Controller
     $player->goals = $request->goals ?: 0;
     $player->assists = $request->assist ?: 0;
     $player->minsplayed = $request->minutes_played ?: 0;
+    $player->ranking_value = $newRankingValue;
+    $player->rank = 0;
 
     // Handle image upload
     if ($request->hasFile('pimage')) {
@@ -51,6 +66,18 @@ class AdminController extends Controller
     }
     
     $player->save();
+
+
+    $players = Player::all();
+            $existingPlayers = $players->sortByDesc('ranking_value');
+            $rank = 1;
+            foreach ($existingPlayers as $player) {
+                // Update the desired column value for each player
+                $player->rank = $rank; 
+                $player->save(); // Save the changes to the database
+                $rank++;
+            }
+
     
     return redirect()->back()->with('message', 'Player Added Successfully');
     }
