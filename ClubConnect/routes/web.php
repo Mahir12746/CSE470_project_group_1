@@ -72,6 +72,17 @@ Route::post('/store_match', [AdminController::class, 'store_match'])->name('admi
 
 Route::get('/matches', [AdminController::class, 'view_matches'])->name('admin.view_matches');
 
+Route::get('/request_match_page',[ClubController::class,'request_match_page']);
+
+Route::post('/send_match_request', [ClubController::class, 'send_match_request'])->name('club.send_match_request');
+
+Route::get('/view_match_requests', [AdminController::class, 'view_match_requests'])->name('admin.view_match_requests');
+
+Route::post('/approve_match_request/{id}', [AdminController::class, 'approve_match_request'])->name('admin.approve_match_request');
+
+Route::post('/decline_match_request/{id}', [AdminController::class, 'decline_match_request'])->name('admin.decline_match_request');
+
+
 
 
 

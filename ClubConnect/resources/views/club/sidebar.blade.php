@@ -71,7 +71,7 @@
 
 
             <li class="sidebar-item">
-              <a class="sidebar-link" href="#" aria-expanded="false">
+              <a class="sidebar-link" href="{{url('/request_match_page')}}" aria-expanded="false">
                 <span>
                   <i class="ti ti-login"></i>
                 </span>
