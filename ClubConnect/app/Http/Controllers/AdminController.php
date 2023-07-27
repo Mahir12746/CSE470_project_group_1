@@ -6,15 +6,22 @@ use App\Models\Player;
 
 use App\Models\ClubBid;
 
+use App\Models\Club;
+
 use App\Models\Ranking;
+
 use Illuminate\Http\Request;
+
 use Illuminate\Support\Facades\Session;
+
+use App\Models\Matches;
 
 class AdminController extends Controller
 {
     public function add_player_page()
     {
-    	return view('admin.Add_Player');
+        $clubs = Club::all(); 
+        return view('admin.Add_Player',compact('clubs'));
     }
 
     public function add_player_info(Request $request)
@@ -169,6 +176,11 @@ class AdminController extends Controller
             return redirect()->back()->with('error', 'The player does not exist in our database.');
         }
     }
+    
+    public function sponsor_page()
+    {
+    	return view('admin.sponsor_page');
+    }
 
 
     public function showPendingBids()
@@ -198,6 +210,43 @@ class AdminController extends Controller
         Session::flash('message', 'Bid declined');
         return redirect()->back();
     }
+
+    public function create_match_page()
+    {
+        $clubs = Club::all();
+        return view('admin.create_match', compact('clubs'));
+    }
+
+    public function store_match(Request $request)
+    {
+        $request->validate([
+            'team1' => 'required|exists:clubs,id',
+            'team2' => 'required|different:team1|exists:clubs,id',
+            'match_datetime' => 'required|date',
+            'stadium' => 'required|string',
+        ]);
+
+        $matches = new Matches;
+        $matches->team1_id = $request->team1;
+        $matches->team2_id = $request->team2;
+        $matches->match_datetime = $request->match_datetime;
+        $matches->stadium = $request->stadium;
+        $matches->save();
+
+        return redirect()->route('admin.create_match_page')->with('message', 'Match created successfully');
+    }
+    public function view_matches()
+    {
+    $matches = Matches::all();
+
+    foreach ($matches as $match) {
+        $match->team1_name = Club::findOrFail($match->team1_id)->club_name;
+        $match->team2_name = Club::findOrFail($match->team2_id)->club_name;
+    }
+    return view('admin.matches', compact('matches'));
+    }
+
+    
 
 
 

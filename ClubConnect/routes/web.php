@@ -54,6 +54,8 @@ Route::get('/show_player_page',[ClubController::class,'show_player_page']);
 
 Route::get('/squad_page',[ClubController::class,'squad_page']);
 
+Route::get('/sponsor_page',[AdminController::class,'sponsor_page']);
+
 Route::post('/submitbid/{player}', [ClubController::class, 'submitbid'])->name('submitBid');
 
 Route::get('/showPendingBids',[AdminController::class,'showPendingBids']);
@@ -64,9 +66,17 @@ Route::post('/declineBid/{bid}', [AdminController::class, 'declineBid'])->name('
 
 Route::get('/bid_status', [ClubController::class, 'bidStatus'])->name('bid_status')->middleware('auth');
 
+<<<<<<< HEAD
 Route::get('/print_pdf/{id}',[ClubController::class,'print_pdf']);
 
 Route::get('/report_generate',[ClubController::class,'report_generate']);
+=======
+Route::get('/create_match', [AdminController::class, 'create_match_page'])->name('admin.create_match_page');
+
+Route::post('/store_match', [AdminController::class, 'store_match'])->name('admin.store_match');
+
+Route::get('/matches', [AdminController::class, 'view_matches'])->name('admin.view_matches');
+>>>>>>> 1d69202f7b4c3a9d7a2cee4e6dddddd9a89142e5
 
 
 
