@@ -50,33 +50,7 @@
       background-color: #0069d9;
     }
 
-    .alert {
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-    }
-
-    .alert .close {
-      position: absolute;
-      top: 50%;
-      right: 0;
-      transform: translateY(-50%);
-      font-size: 1rem;
-      line-height: 1;
-      padding: 0.25rem 0.5rem;
-      color: #000;
-      opacity: 0.5;
-      border: none;
-      background: transparent;
-      outline: none;
-      cursor: pointer;
-    }
-
-    .alert .close:hover {
-      opacity: 1;
-    }
+    
   </style>
 </head>
 

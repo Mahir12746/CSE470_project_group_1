@@ -16,6 +16,8 @@ use Illuminate\Support\Facades\Session;
 
 use App\Models\Matches;
 
+use App\Models\MatchRequest;
+
 class AdminController extends Controller
 {
     public function add_player_page()
@@ -244,6 +246,39 @@ class AdminController extends Controller
         $match->team2_name = Club::findOrFail($match->team2_id)->club_name;
     }
     return view('admin.matches', compact('matches'));
+    }
+
+    public function view_match_requests()
+{
+    $matchRequests = MatchRequest::with(['club', 'team2'])->get();
+    return view('admin.match_requests', compact('matchRequests'));
+}
+    public function approve_match_request($id)
+    {
+        $matchRequest = MatchRequest::findOrFail($id);
+        $matchRequest->status = 'approved';
+        $matchRequest->save();
+
+        // Move the approved match request to the matches table
+        $approvedMatch = new Matches();
+        $approvedMatch->team1_id = $matchRequest->club_id;
+        $approvedMatch->team2_id = $matchRequest->team2_id;
+        $approvedMatch->match_datetime = $matchRequest->match_datetime;
+        $approvedMatch->stadium = $matchRequest->stadium;
+        $approvedMatch->save();
+
+        //$matchRequest->delete(); if we want to delete from matchrequest table
+
+        return redirect()->route('admin.view_match_requests')->with('message', 'Match request approved successfully');
+    }
+
+    public function decline_match_request($id)
+    {
+        $matchRequest = MatchRequest::findOrFail($id);
+        $matchRequest->status = 'declined';
+        $matchRequest->save();
+
+        return redirect()->route('admin.view_match_requests')->with('message', 'Match request declined successfully');
     }
 
     

@@ -147,11 +147,7 @@
                 <a href="{{ url('/create_club_page') }}" class="btn btn-primary">Create Club</a>
                 @endif
 
-                @if(Session::has('message'))
-                  <div class="alert alert-success">
-                    {{ Session::get('message') }}
-                  </div>
-                @endif
+                
 
                 <!-- END -->
             </div>
