@@ -18,6 +18,12 @@ use App\Models\Matches;
 
 use App\Models\MatchRequest;
 
+use App\Models\User;
+
+use Illuminate\Support\Facades\Notification;
+
+use App\Notifications\SendEmailNotification;
+
 class AdminController extends Controller
 {
     public function add_player_page()
@@ -281,7 +287,31 @@ class AdminController extends Controller
         return redirect()->route('admin.view_match_requests')->with('message', 'Match request declined successfully');
     }
 
-    
+    public function email_sys()
+    {
+        $fans = User::where('usertype', 4)->get();
+        return view('admin.email_fans', compact('fans'));
+    }
+
+    public function send_email($id)
+    {
+        $fans=User::find($id);
+        return view('admin.email_info', compact('fans'));
+    }
+
+    public function send_fan_email(Request $request, $id)
+    {
+        $fans=User::find($id);
+        $details = [
+            'greeting' => $request->greeting,
+            'body' => $request->body,
+            'button' => $request->button,
+            'url' => $request->url,
+        ];
+
+        Notification::send($fans, new SendEmailNotification($details));
+        return redirect()->back();
+    }
 
 
 

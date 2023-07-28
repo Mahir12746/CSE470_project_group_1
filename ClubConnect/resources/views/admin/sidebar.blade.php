@@ -106,14 +106,14 @@
             </li>
             <li class="nav-small-cap">
               <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-              <span class="hide-menu">Match Result</span>
+              <span class="hide-menu">Match News</span>
             </li>
             <li class="sidebar-item">
-              <a class="sidebar-link" href="#" aria-expanded="false">
+              <a class="sidebar-link" href="{{url('email_sys')}}" aria-expanded="false">
                 <span>
                   <i class="ti ti-mood-happy"></i>
                 </span>
-                <span class="hide-menu">Notification System</span>
+                <span class="hide-menu">Email System</span>
               </a>
             </li>
           </ul>

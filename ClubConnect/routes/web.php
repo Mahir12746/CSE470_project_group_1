@@ -93,3 +93,10 @@ Route::post('/decline_match_request/{id}', [AdminController::class, 'decline_mat
 
 
 Route::get('/search',[HomeController::class, 'searchplayer']);
+
+
+Route::get('/email_sys',[AdminController::class,'email_sys']);
+
+Route::get('/send_email/{id}',[AdminController::class,'send_email']);
+
+Route::post('/send_fan_email/{id}',[AdminController::class,'send_fan_email']);
