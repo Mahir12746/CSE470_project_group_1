@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Auth;
 
 use App\Models\User;
 
+use App\Models\Player;
+
 class HomeController extends Controller
 {
 
@@ -32,5 +34,13 @@ class HomeController extends Controller
         {
             return view('home.fanpage');
         }
+    }
+
+
+    public function searchplayer(Request $request)
+    {
+        $searchText = $request->search;
+        $players = Player::searchPlayers($searchText);
+        return view('players_page', compact('players'));
     }
 }

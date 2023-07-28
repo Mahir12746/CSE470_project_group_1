@@ -57,6 +57,15 @@
                     </li>
                     @endauth
                 @endif
+
+                <li class="nav-item" style="padding-left: 10px;">
+                    <form style="display: flex;" action="{{url('search')}}" method="get">
+                        @csrf
+                        <input type="text" name="search" placeholder="Search For Players" style="margin-right: 10px;">
+                        <input type="submit" value="Search" class="btn btn-outline-primary">
+                    </form>
+                </li>
+                
             </ul>
         </div>
     </div>

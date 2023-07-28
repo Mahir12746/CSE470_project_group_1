@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ClubController;
+use App\Http\Controllers\TicketController;
 
 /*
 |--------------------------------------------------------------------------
@@ -66,19 +67,14 @@ Route::post('/declineBid/{bid}', [AdminController::class, 'declineBid'])->name('
 
 Route::get('/bid_status', [ClubController::class, 'bidStatus'])->name('bid_status')->middleware('auth');
 
-<<<<<<< HEAD
 Route::get('/print_pdf/{id}',[ClubController::class,'print_pdf']);
 
 Route::get('/report_generate',[ClubController::class,'report_generate']);
-=======
 Route::get('/create_match', [AdminController::class, 'create_match_page'])->name('admin.create_match_page');
 
 Route::post('/store_match', [AdminController::class, 'store_match'])->name('admin.store_match');
 
 Route::get('/matches', [AdminController::class, 'view_matches'])->name('admin.view_matches');
->>>>>>> 1d69202f7b4c3a9d7a2cee4e6dddddd9a89142e5
 
 
-
-
-
+Route::get('/search',[HomeController::class, 'searchplayer']);
