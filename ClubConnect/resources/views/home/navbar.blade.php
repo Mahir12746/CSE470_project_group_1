@@ -30,7 +30,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link click-scroll" href="#section_5">Search</a>
+                    <a class="nav-link click-scroll" href="#section_5">Comments</a>
                 </li>
 
                 @if (Route::has('login'))

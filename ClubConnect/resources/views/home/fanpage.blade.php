@@ -54,6 +54,10 @@
         <!-- Event -->
         @include('home.event')
         <!-- Event -->
+
+        <!-- Event -->
+        @include('home.comments')
+        <!-- Event -->
        
     </main>
 

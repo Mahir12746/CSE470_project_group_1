@@ -100,3 +100,7 @@ Route::get('/email_sys',[AdminController::class,'email_sys']);
 Route::get('/send_email/{id}',[AdminController::class,'send_email']);
 
 Route::post('/send_fan_email/{id}',[AdminController::class,'send_fan_email']);
+
+Route::post('/add_comment',[HomeController::class,'add_comment']);
+
+Route::post('/add_reply',[HomeController::class,'add_reply']);
