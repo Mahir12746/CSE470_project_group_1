@@ -18,4 +18,10 @@ class Matches extends Model
     {
         return $this->belongsTo(Club::class, 'team2_id');
     }
+
+    public function tickets()
+    {
+        return $this->hasMany(Ticket::class, 'match_id');
+    }
+    
 }

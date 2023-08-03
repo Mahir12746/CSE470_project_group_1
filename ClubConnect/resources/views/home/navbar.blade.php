@@ -61,8 +61,9 @@
                 <li class="nav-item" style="padding-left: 10px;">
                     <form style="display: flex;" action="{{url('search')}}" method="get">
                         @csrf
-                        <input type="text" name="search" placeholder="Search For Players" style="margin-right: 10px;">
-                        <input type="submit" value="Search" class="btn btn-outline-primary">
+                        <input type="text" name="search" placeholder="Search For Players" class="form-control rounded-pill" style="margin-right: 10px;">
+
+                        <input type="submit" value="Search" class="btn custom-btn d-lg-block d-none">
                     </form>
                 </li>
                 

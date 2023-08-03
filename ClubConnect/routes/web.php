@@ -87,13 +87,7 @@ Route::post('/approve_match_request/{id}', [AdminController::class, 'approve_mat
 
 Route::post('/decline_match_request/{id}', [AdminController::class, 'decline_match_request'])->name('admin.decline_match_request');
 
-
-
-
-
-
 Route::get('/search',[HomeController::class, 'searchplayer']);
-
 
 Route::get('/email_sys',[AdminController::class,'email_sys']);
 
@@ -104,3 +98,7 @@ Route::post('/send_fan_email/{id}',[AdminController::class,'send_fan_email']);
 Route::post('/add_comment',[HomeController::class,'add_comment']);
 
 Route::post('/add_reply',[HomeController::class,'add_reply']);
+
+Route::get('/ticket',[AdminController::class,'ticket']);
+
+Route::post('/matches/{match}/tickets', [AdminController::class, 'createTickets'])->name('matches.tickets.create');

@@ -20,6 +20,8 @@ use App\Models\MatchRequest;
 
 use App\Models\User;
 
+use App\Models\Ticket;
+
 use Illuminate\Support\Facades\Notification;
 
 use App\Notifications\SendEmailNotification;
@@ -312,6 +314,31 @@ class AdminController extends Controller
         Notification::send($fans, new SendEmailNotification($details));
         return redirect()->back();
     }
+
+    public function ticket()
+{
+    $approvedMatches = Matches::with(['team1', 'team2', 'tickets'])->where('status', 'Approved')->get();
+    return view('admin.ticket', compact('approvedMatches'));
+}
+
+public function createTickets(Request $request, $matchId)
+{
+    $request->validate([
+        'seats' => 'required|integer|min:1',
+    ]);
+
+    $match = Matches::findOrFail($matchId);
+
+    for ($i = 1; $i <= $request->seats; $i++) {
+        
+        Ticket::create([
+            'match_id' => $match->id,
+            'seat_number' => $i,
+        ]);
+    }
+
+    return redirect()->back();
+}
 
 
 
