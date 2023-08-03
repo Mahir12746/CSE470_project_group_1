@@ -321,24 +321,24 @@ class AdminController extends Controller
     return view('admin.ticket', compact('approvedMatches'));
 }
 
-public function createTickets(Request $request, $matchId)
-{
-    $request->validate([
-        'seats' => 'required|integer|min:1',
-    ]);
-
-    $match = Matches::findOrFail($matchId);
-
-    for ($i = 1; $i <= $request->seats; $i++) {
-        
-        Ticket::create([
-            'match_id' => $match->id,
-            'seat_number' => $i,
+    public function createTickets(Request $request, $matchId)
+    {
+        $request->validate([
+            'seats' => 'required|integer|min:1',
         ]);
-    }
 
-    return redirect()->back();
-}
+        $match = Matches::findOrFail($matchId);
+
+        for ($i = 1; $i <= $request->seats; $i++) {
+            
+            Ticket::create([
+                'match_id' => $match->id,
+                'seat_number' => $i,
+            ]);
+        }
+
+        return redirect()->back();
+    }
 
 
 

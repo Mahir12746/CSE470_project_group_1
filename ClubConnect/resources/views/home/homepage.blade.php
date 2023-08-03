@@ -24,33 +24,6 @@
     <link href="home/css/templatemo-festava-live.css" rel="stylesheet">
 
     <!-- Header -->
-<style>
-.Ticket-Text{
-    align-items: center;
-    text-align:center;
-    padding-bottom:1rem;
-}
-.ticket-seat {
-    width: 30px;
-    height: 30px;
-    border: 1px solid #ccc;
-    margin: 5px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-}
-
-.selected {
-    background-color: #ffcc00;
-}
-
-.purchased {
-    background-color: #ff0000;
-}
-
-
-</style>
 </head>
 
 <body>
@@ -76,17 +49,8 @@
         <!-- Meet -->
         @include('home.players')
         <!-- Meet -->
-
-        @include('home.fan_ticket')
-
-
         <!-- Event -->
         @include('home.event')
-        <!-- Event -->
-
-        <!-- Event -->
-        @include('home.comments')
-        <!-- Event -->
        
     </main>
 

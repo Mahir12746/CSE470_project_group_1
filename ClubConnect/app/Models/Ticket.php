@@ -10,6 +10,8 @@ class Ticket extends Model
     protected $fillable = [
         'match_id',
         'seat_number',
+        'is_available',
+        'is_purchased',
         
     ];
 

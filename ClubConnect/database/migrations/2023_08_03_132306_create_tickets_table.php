@@ -12,9 +12,10 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('match_id');
             $table->integer('seat_number');
+            $table->boolean('is_available')->default(true);
+            $table->boolean('is_purchased')->default(false);
             $table->timestamps();
-
-            // Define foreign key relationship with the matches table
+            
             $table->foreign('match_id')->references('id')->on('matches')->onDelete('cascade');
         });
     }

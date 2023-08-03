@@ -102,3 +102,7 @@ Route::post('/add_reply',[HomeController::class,'add_reply']);
 Route::get('/ticket',[AdminController::class,'ticket']);
 
 Route::post('/matches/{match}/tickets', [AdminController::class, 'createTickets'])->name('matches.tickets.create');
+
+Route::get('/purchase_ticket/{ticket}', [HomeController::class, 'purchaseTicket'])->name('purchase_ticket');
+
+Route::get('/purchase_tickets/{match}', [HomeController::class, 'purchaseTicketsMatch'])->name('purchase_tickets_match');

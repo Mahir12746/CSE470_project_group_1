@@ -9,19 +9,32 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 
 use App\Models\Player;
+
 use App\Models\Comment;
+
 use App\Models\Reply;
+
+use App\Models\Matches;
+
+use App\Models\Club;
+
+use App\Models\Ticket;
+
+
 
 
 class HomeController extends Controller
 {
 
     public function index()
-	{
-        $comment=comment::orderby('id', 'desc')->get();
-        $reply=reply::all();
-        return view('home.fanpage', compact('comment', 'reply'));
-    }
+{
+    $comment = Comment::orderby('id', 'desc')->get();
+    $reply = Reply::all();
+
+    
+
+    return view('home.homepage', compact('comment', 'reply'));
+}
 
     public function redirect()
     {
@@ -39,7 +52,10 @@ class HomeController extends Controller
         {
             $comment=comment::orderby('id', 'desc')->get();
             $reply=reply::all();
-            return view('home.fanpage',compact('comment', 'reply'));
+            $approvedMatches = Matches::with(['team1', 'team2', 'tickets'])
+                             ->where('status', 'Approved')
+                             ->get();
+            return view('home.fanpage',compact('comment', 'reply', 'approvedMatches'));
         }
     }
 
@@ -86,5 +102,27 @@ class HomeController extends Controller
         {
             return redirect('login');
         }
+    }
+
+    public function purchaseTicket(Ticket $ticket)
+    {
+        // if the ticket is available
+        if ($ticket->is_available && !$ticket->is_purchased) {
+            $ticket->is_purchased = true;
+            $ticket->is_available = false;
+            $ticket->save();
+
+            return redirect()->back()->with('message', 'Ticket purchased successfully!');
+        }
+
+        //show error message
+        return redirect()->back()->with('error', 'Sorry, the ticket is not available for purchase.');
+    }
+    public function purchaseTicketsMatch(Matches $match)
+    {
+        // Fetch available tickets 
+        $availableTickets = $match->tickets()->where('is_available', true)->get();
+
+        return view('purchase_tickets', compact('match', 'availableTickets'));
     }
 }
