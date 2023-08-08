@@ -5,16 +5,9 @@
                     <div class="col-lg-6 col-12 mb-4 mb-lg-0 d-flex align-items-center">
                         <div class="services-info">
                             <h2 class="text-white mb-4">Clubs</h2>
-
-                            <p class="text-white">Top Clubs</p>
-
-                            <h6 class="text-white mt-4">Real Madrid</h6>
-
-                            <p class="text-white">zzzzzz</p>
-
-                            <h6 class="text-white mt-4">Barcelona</h6>
-
-                            <p class="text-white">zzzzz</p>
+                            @foreach($clubs as $club)
+                            <p class="text-white">{{ $club->club_name }}</p>
+                            @endforeach
                         </div>
                     </div>
 
@@ -30,8 +23,6 @@
 
                                 <div class="ms-4">
                                     <h3>Club Pic</h3>
-
-                                    <p class="mb-0">Winning Moment</p>
                                 </div>
                             </div>
                         </div>

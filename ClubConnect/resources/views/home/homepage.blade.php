@@ -24,8 +24,8 @@
     <link href="home/css/templatemo-festava-live.css" rel="stylesheet">
 
     <!-- Header -->
-</head>
 
+</head>
 <body>
 
     <main>

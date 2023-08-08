@@ -25,10 +25,11 @@
 
     <!-- Header -->
 <style>
+
 .Ticket-Text{
     align-items: center;
     text-align:center;
-    padding-bottom:1rem;
+    
 }
 .ticket-seat {
     width: 30px;
@@ -49,6 +50,59 @@
     background-color: #ff0000;
 }
 
+.card {
+  border: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  max-width: 250px;
+  margin: 100px; 
+  display: flex;
+  
+}
+
+  .card:hover {
+    transform: translateY(-3px);
+  }
+
+  .card-img-top {
+    max-height: 150px; /* Adjust the card image height */
+    object-fit: cover;
+  }
+
+  .card-title {
+    margin-bottom: 0.5rem;
+    font-size: 1.25rem;
+  }
+
+  .card-title i {
+    margin-right: 5px; /* Add space between the star and text */
+  }
+
+  .rank-text {
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+
+  .card-text {
+    font-size: 0.9rem;
+  }
+
+  /* Flex layout for 3 cards in a row */
+  .row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 0; 
+   
+}
+
+  .col-lg-4 {
+  flex: 0 0 calc(33.33% - 2px); 
+  padding: 0; 
+  margin-bottom: 0px; 
+}
 
 </style>
 </head>
@@ -79,9 +133,7 @@
 
         @include('home.fan_ticket')
 
-
         <!-- Event -->
-        @include('home.event')
         <!-- Event -->
 
         <!-- Event -->

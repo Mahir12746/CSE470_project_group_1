@@ -8,8 +8,8 @@
         </div>
         <div class="row">
             @foreach ($approvedMatches as $match)
-                <div class="col-lg-6">
-                    <div class="card mb-4">
+                <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+                    <div class="card mb-1">
                         <div class="card-header">
                             <h3 class="card-title">{{ $match->team1->club_name }} vs {{ $match->team2->club_name }}</h3>
                         </div>

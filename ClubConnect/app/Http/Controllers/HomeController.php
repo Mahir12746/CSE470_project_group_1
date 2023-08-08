@@ -30,10 +30,10 @@ class HomeController extends Controller
 {
     $comment = Comment::orderby('id', 'desc')->get();
     $reply = Reply::all();
-
+    $club = Club::all();
     
 
-    return view('home.homepage', compact('comment', 'reply'));
+    return view('home.homepage', compact('comment', 'reply', 'club'));
 }
 
     public function redirect()
@@ -52,10 +52,12 @@ class HomeController extends Controller
         {
             $comment=comment::orderby('id', 'desc')->get();
             $reply=reply::all();
+            $clubs = Club::all();
+            $players = Player::orderBy('rank', 'asc')->get();
             $approvedMatches = Matches::with(['team1', 'team2', 'tickets'])
                              ->where('status', 'Approved')
                              ->get();
-            return view('home.fanpage',compact('comment', 'reply', 'approvedMatches'));
+            return view('home.fanpage',compact('comment', 'reply', 'approvedMatches', 'clubs','players'));
         }
     }
 
