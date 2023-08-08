@@ -1,5 +1,5 @@
 <!-- Fan Ticket Section -->
-<section class="section-padding" id="fan-ticket">
+<section class="artists-section section-padding" id="section_4">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">

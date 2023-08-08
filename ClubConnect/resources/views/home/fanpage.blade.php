@@ -111,9 +111,7 @@
 
     <main>
 
-        <!-- Header -->
-        @include('home.header')
-        <!-- Header -->
+        
 
         <!-- NavBar -->
         @include('home.navbar')

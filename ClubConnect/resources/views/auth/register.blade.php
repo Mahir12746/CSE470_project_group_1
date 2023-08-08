@@ -43,7 +43,7 @@
                     </label>
                     <label class="inline-flex items-center ml-6">
                         <input type="radio" class="form-radio" name="usertype" value="3">
-                        <span class="ml-2">Coach</span>
+                        <span class="ml-2">Sponsor</span>
                     </label>
                     <label class="inline-flex items-center ml-6">
                         <input type="radio" class="form-radio" name="usertype" value="4">

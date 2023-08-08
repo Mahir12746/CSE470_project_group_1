@@ -28,12 +28,14 @@ class HomeController extends Controller
 
     public function index()
 {
-    $comment = Comment::orderby('id', 'desc')->get();
-    $reply = Reply::all();
-    $club = Club::all();
-    
-
-    return view('home.homepage', compact('comment', 'reply', 'club'));
+    $comment=comment::orderby('id', 'desc')->get();
+            $reply=reply::all();
+            $clubs = Club::all();
+            $players = Player::orderBy('rank', 'asc')->get();
+            $approvedMatches = Matches::with(['team1', 'team2', 'tickets'])
+                             ->where('status', 'Approved')
+                             ->get();
+            return view('home.homepage',compact('comment', 'reply', 'approvedMatches', 'clubs','players'));
 }
 
     public function redirect()
@@ -47,6 +49,10 @@ class HomeController extends Controller
         elseif ($usertype=='2')
     	{
     		return view('club.home');
+    	}
+        elseif ($usertype=='3')
+    	{
+    		return view('sponsor.home');
     	}
         else 
         {

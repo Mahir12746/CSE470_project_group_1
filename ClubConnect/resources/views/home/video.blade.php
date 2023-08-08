@@ -9,7 +9,7 @@
 
                         <h1 class="text-white mb-5">FCC Live 2023</h1>
 
-                        <a class="btn custom-btn smoothscroll" href="#section_2">Matches</a>
+                        <a class="btn custom-btn smoothscroll" href="#section_4">Matches</a>
                     </div>
 
                     <div class="col-lg-12 col-12 mt-auto d-flex flex-column flex-lg-row text-center">

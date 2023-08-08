@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ClubController;
 use App\Http\Controllers\TicketController;
+use App\Http\Controllers\SponsorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -115,4 +116,6 @@ Route::get('/matchscore/{id}', [AdminController::class, 'matchscore'])->name('ad
 
 Route::post('/update_scores/{id}', [AdminController::class, 'updateScores'])->name('admin.update_scores');
 
+Route::get('/matches_page',[SponsorController::class,'matches_page']);
 
+Route::get('/club_page',[SponsorController::class,'club_page']);
