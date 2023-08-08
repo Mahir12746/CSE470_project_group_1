@@ -68,8 +68,35 @@ class ClubController extends Controller
 }
     public function edit_club_page()
     {
-    	return view('club.edit_club_page');
+        $user = Auth::user();
+        $club = Club::where('user_id', $user->id)->first(); 
+
+        return view('club.edit_club_page', compact('club'));
     }
+
+    public function update_club(Request $request, Club $club)
+{
+    $validatedData = $request->validate([
+        'club_name' => 'required|string',
+        'club_location' => 'required|string',
+        'club_logo' => 'nullable|image|max:2048',
+    ]);
+
+    $club->club_name = $request->club_name;
+    $club->club_location = $request->club_location;
+
+    if ($request->hasFile('club_logo')) {
+        $image = $request->file('club_logo');
+        $imageName = time().'.'.$image->getClientOriginalExtension();
+        $image->move(public_path('club_images'), $imageName);
+        $club->club_logo = $imageName;
+    }
+
+    $club->save();
+
+    return redirect()->back()->with('message', 'Club Updated Successfully');
+}
+
     
     public function show_player_page()
 {

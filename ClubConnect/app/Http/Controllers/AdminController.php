@@ -116,9 +116,10 @@ class AdminController extends Controller
     }
 
     public function generate_rating_page()
-    {
-        return view('admin.Generate_rating');
-    }
+        {
+            $players = Player::orderBy('rank', 'asc')->get(); // sort by rank
+            return view('admin.Generate_rating', compact('players'));
+        }
 
     public function find_player_ranking(Request $request)
     {

@@ -59,7 +59,7 @@
                 <span>
                   <i class="ti ti-cards"></i>
                 </span>
-                <span class="hide-menu">Generate Rating</span>
+                <span class="hide-menu">Ranking</span>
               </a>
             </li>
             

@@ -51,6 +51,8 @@ Route::post('/create_club', [ClubController::class, 'create_club'])->name('creat
 
 Route::get('/edit_club_page',[ClubController::class,'edit_club_page']);
 
+Route::put('/update_club/{club}',[ClubController::class,'update_club'])->name('update_club');
+
 Route::get('/show_player_page',[ClubController::class,'show_player_page']);
 
 Route::get('/squad_page',[ClubController::class,'squad_page']);
