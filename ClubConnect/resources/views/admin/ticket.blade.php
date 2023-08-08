@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Club Connect Admin Panel</title>
+  <title>Ticket System</title>
   <link rel="shortcut icon" type="image/png" href="../admin/assets/images/logos/favicon.png" />
   <link rel="stylesheet" href="../admin/assets/css/styles.min.css" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -15,6 +15,7 @@
     .matches-container .nav-link {
       cursor: pointer;
     }
+
     .matches-container .tab-pane {
       padding: 20px;
     }
