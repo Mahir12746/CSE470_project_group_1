@@ -108,3 +108,11 @@ Route::post('/matches/{match}/tickets', [AdminController::class, 'createTickets'
 Route::get('/purchase_ticket/{ticket}', [HomeController::class, 'purchaseTicket'])->name('purchase_ticket');
 
 Route::get('/purchase_tickets/{match}', [HomeController::class, 'purchaseTicketsMatch'])->name('purchase_tickets_match');
+
+Route::get('/end_match/{id}', [AdminController::class, 'endMatch'])->name('admin.end_match');
+
+Route::get('/matchscore/{id}', [AdminController::class, 'matchscore'])->name('admin.matchscore');
+
+Route::post('/update_scores/{id}', [AdminController::class, 'updateScores'])->name('admin.update_scores');
+
+

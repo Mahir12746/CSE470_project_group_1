@@ -341,6 +341,32 @@ class AdminController extends Controller
         return redirect()->back();
     }
 
+    public function endMatch($id)
+{
+    $match = Matches::findOrFail($id);
+    $match->match_status = 'ended'; // Set match status to 'ended'
+    $match->save();
+    return redirect()->route('admin.matchscore', ['id' => $match->id]);
+}
+
+    public function updateScores(Request $request, $id)
+    {
+        $match = Matches::findOrFail($id);
+        $match->team1_score = $request->team1_score;
+        $match->team2_score = $request->team2_score;
+        $match->save();
+
+        return redirect()->route('admin.view_matches')->with('message', 'Match scores updated');
+    }
+    public function matchscore($id)
+{
+    $match = Matches::findOrFail($id);
+    $match->team1_name = Club::findOrFail($match->team1_id)->club_name;
+    $match->team2_name = Club::findOrFail($match->team2_id)->club_name;
+
+    return view('admin.matchscore', compact('match'));
+}
+
 
 
 }

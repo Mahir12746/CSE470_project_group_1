@@ -24,7 +24,7 @@
       border: 1px solid #ccc;
       border-radius: 4px;
       padding: 15px;
-      margin-bottom: 15px;
+      margin-bottom: 30px;
     }
 
     .team-names {
@@ -50,7 +50,21 @@
       background-color: #0069d9;
     }
 
-    
+    /* Custom Changes */
+    .match-box a.btn-primary {
+      background-color: #007bff;
+      margin-top: 10px;
+    }
+
+    .match-box .match-info span {
+      font-weight: bold;
+      font-size: 20px;
+    }
+
+    .match-box .btn-primary {
+      font-size: 14px;
+      padding: 5px 10px;
+    }
   </style>
 </head>
 
@@ -76,13 +90,23 @@
         @foreach ($matches as $match)
         <div class="match-box">
           <div class="team-names">
-            {{ $match->team1->club_name }} VS {{ $match->team2->club_name }}
+            {{ $match->team1_name }} VS {{ $match->team2_name }}
           </div>
           <div class="match-info">
-            Time: {{ $match->match_datetime }}
+            <span>Time:</span> {{ $match->match_datetime }}
             <br>
-            Stadium: {{ $match->stadium }}
+            <span>Stadium:</span> {{ $match->stadium }}
           </div>
+          @if ($match->match_status === null)
+            <a href="{{ route('admin.end_match', ['id' => $match->id]) }}" class="btn btn-primary">End Match</a>
+          @else
+            <!-- Show match scores here -->
+            <div style="font-size: 24px; font-weight: bold; margin-top: 10px;">
+              Score {{ $match->team1_score }}-{{ $match->team2_score }}
+            </div>
+            <!-- Add option to update individual player scores -->
+            <a href="{{url('/track_performance_page')}}" class="btn btn-primary">Update Player Scores</a>
+          @endif
         </div>
         @endforeach
       </div>
@@ -93,5 +117,6 @@
       <!--  Footer End -->
     </div>
   </div>
+
 </body>
 </html>
