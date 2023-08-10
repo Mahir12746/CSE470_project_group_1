@@ -42,12 +42,6 @@ class SponsorController extends Controller
             return view('sponsor.matches_page', compact('matches'));
         }
 
-        public function club_page()
-    {   
-
-        $clubs = Club::all();
-        return view('sponsor.club_page', compact('clubs'));
-    }
 
     public function send_sponsorship_request(Request $request)
 {
@@ -70,4 +64,13 @@ class SponsorController extends Controller
 
     return redirect()->back()->with('message', 'Sponsorship request submitted');
 }
+
+    public function requests_page()
+    {
+        $matches = SponsorshipRequest::with(['match.team1', 'match.team2'])->get();
+
+        return view('sponsor.requests_page', compact('matches'));
+    }
+
+
 }

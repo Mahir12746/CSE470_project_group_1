@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('stadium');
             $table->string('status')->default('Approved');
             $table->timestamps();
+            $table->string('sponsor_picture')->nullable();
 
             // Foreign keys
             $table->foreign('team1_id')->references('id')->on('clubs');
