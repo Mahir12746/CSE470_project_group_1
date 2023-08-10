@@ -116,6 +116,9 @@ Route::get('/matchscore/{id}', [AdminController::class, 'matchscore'])->name('ad
 
 Route::post('/update_scores/{id}', [AdminController::class, 'updateScores'])->name('admin.update_scores');
 
+Route::get('/club_page',[SponsorController::class,'club_page']);
+
 Route::get('/matches_page',[SponsorController::class,'matches_page']);
 
-Route::get('/club_page',[SponsorController::class,'club_page']);
+Route::post('/send_sponsorship_request/{id}', [SponsorController::class, 'send_sponsorship_request'])->name('send_sponsorship_request');
+
