@@ -22,6 +22,8 @@ use App\Models\User;
 
 use App\Models\Ticket;
 
+use App\Models\SponsorshipRequest;
+
 use Illuminate\Support\Facades\Notification;
 
 use App\Notifications\SendEmailNotification;
@@ -131,7 +133,25 @@ class AdminController extends Controller
                 $rank++;
             }
             $player->save();
+
+        $goals = $request->goals;
+        $assists = $request->assist;
+        $minutesPlayed = $request->minutes_played;
+        $rankingValue = ($goals * 2) + ($assists * 1.5) + ($minutesPlayed / 90);
+        $newRankingValue = $rankingValue;
+        $players = Player::all();
+        $existingPlayers = $players->sortByDesc('ranking_value');
+        $rank = 1;
+            foreach ($existingPlayers as $player) {
+                $player->rank = $rank; 
+                $player->save(); 
+                $rank++;
+            }
         }
+
+        
+
+
         return redirect()->back()->with('message', 'Performance Updated Successfully');
     }
 
@@ -379,13 +399,42 @@ class AdminController extends Controller
         return redirect()->route('admin.view_matches')->with('message', 'Match scores updated');
     }
     public function matchscore($id)
-{
-    $match = Matches::findOrFail($id);
-    $match->team1_name = Club::findOrFail($match->team1_id)->club_name;
-    $match->team2_name = Club::findOrFail($match->team2_id)->club_name;
+    {
+        $match = Matches::findOrFail($id);
+        $match->team1_name = Club::findOrFail($match->team1_id)->club_name;
+        $match->team2_name = Club::findOrFail($match->team2_id)->club_name;
 
-    return view('admin.matchscore', compact('match'));
+        return view('admin.matchscore', compact('match'));
+    }
+
+    public function approveSponsorship($id)
+    {
+        $request = SponsorshipRequest::findOrFail($id);
+        $request->status = 'approved';
+        $request->save();
+
+        $match = Matches::find($request->match_id);
+        $match->sponsor_picture = $request->image_path;
+        $match->save();
+
+        return redirect()->back()->with('message', 'Sponsorship request approved');
+    }
+
+    public function declineSponsorship($id)
+    {
+        $request = SponsorshipRequest::findOrFail($id);
+        $request->status = 'rejected';
+        $request->save();
+
+        return redirect()->back()->with('message', 'Sponsorship request declined');
+    }
+
+    public function sponsor_approval()
+{
+    $requests = SponsorshipRequest::with(['match.team1', 'match.team2'])->get(); 
+    return view('admin.sponsor_approval', compact('requests'));
 }
+
 
 
 

@@ -89,6 +89,15 @@
             </li>
 
             <li class="sidebar-item">
+              <a class="sidebar-link" href="{{url('/sponsor_approval')}}" aria-expanded="false">
+                <span>
+                  <i class="ti ti-alert-circle"></i>
+                </span>
+                <span class="hide-menu">Sponsor Approval</span>
+              </a>
+            </li>
+
+            <li class="sidebar-item">
               <a class="sidebar-link" href="{{url('/matches')}}" aria-expanded="false">
                 <span>
                   <i class="ti ti-user-plus"></i>

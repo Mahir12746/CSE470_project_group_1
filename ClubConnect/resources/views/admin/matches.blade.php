@@ -104,6 +104,12 @@
             <div style="font-size: 24px; font-weight: bold; margin-top: 10px;">
               Score {{ $match->team1_score }}-{{ $match->team2_score }}
             </div>
+            <div class="match-info">
+            @if ($match->sponsor_picture)
+            <span>Sponsored By: </span>
+            <img src="{{ asset('sponsor_image/' . $match->sponsor_picture) }}" alt="Sponsorship Image" style="max-width: 200px;">
+            @endif
+            </div>
             <!-- Add option to update individual player scores -->
             <a href="{{url('/track_performance_page')}}" class="btn btn-primary">Update Player Scores</a>
           @endif
