@@ -16,7 +16,6 @@
                 <th>Goals</th>
                 <th>Assists</th>
                 <th>Minutes Played</th>
-                <!-- Add more columns as needed -->
             </tr>
         </thead>
         <tbody>
@@ -27,7 +26,6 @@
                     <td>{{ $player->goals }}</td>
                     <td>{{ $player->assists }}</td>
                     <td>{{ $player->minsplayed }}</td>
-                    <!-- Add more columns as needed -->
                 </tr>
             @endforeach
         </tbody>
