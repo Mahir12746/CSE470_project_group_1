@@ -11,7 +11,7 @@
         <div>
             <p>Bid ID: {{ $bid->id }}</p>
             <p>Player ID: {{ $bid->player_id }}</p>
-            <p>Status: {{ $bid->is_accepted ? 'Accepted' : 'Denied' }}</p>
+            <p>Status: {{ $bid->is_accepted ? 'Accepted' : 'Pending' }}</p>
         </div>
     @endforeach
 </body>

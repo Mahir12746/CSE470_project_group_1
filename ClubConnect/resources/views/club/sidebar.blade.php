@@ -54,6 +54,16 @@
                 <span class="hide-menu">Players</span>
               </a>
             </li>
+
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="{{url('/show_other_player_page')}}" aria-expanded="false">
+                <span>
+                  <i class="ti ti-cards"></i>
+                </span>
+                <span class="hide-menu">Other Players</span>
+              </a>
+            </li>
+
             <li class="sidebar-item">
               <a class="sidebar-link" href="/squad_page" aria-expanded="false">
                 <span>

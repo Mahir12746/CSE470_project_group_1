@@ -103,52 +103,32 @@ class AdminController extends Controller
     {
         $player = Player::find($id);
         if ($player) {
-            if ($request->has('goals')) {
-                $player->goals = $request->goals;
-            }
-            if ($request->has('assists')) {
-                $player->assists = $request->assists;
-            }
-            if ($request->has('minsplayed')) {
-                $player->minsplayed = $request->minsplayed;
-            }
-
-            $experience = $request->experience;
-            $goals = $request->goals;
-            $assists = $request->assist;
-            $minutesPlayed = $request->minutes_played;
-
-            $rankingValue = $experience + ($goals * 2) + ($assists * 1.5) + ($minutesPlayed / 90);
-
-            $newRankingValue = $rankingValue;
-            $player->ranking_value = $newRankingValue;
-
-            $players = Player::all();
-            $existingPlayers = $players->sortByDesc('ranking_value');
-            $rank = 1;
-            foreach ($existingPlayers as $player) {
-                // Update the desired column value for each player
-                $player->rank = $rank; 
-                $player->save(); // Save the changes to the database
-                $rank++;
-            }
-            $player->save();
-
+        if ($request->has('goals')) {
+            $player->goals = $request->goals;
+        }
+        if ($request->has('assists')) {
+            $player->assists = $request->assists;
+        }
+        if ($request->has('minsplayed')) {
+            $player->minsplayed = $request->minsplayed;
+        }
+        $experience = $request->experience;
         $goals = $request->goals;
-        $assists = $request->assist;
-        $minutesPlayed = $request->minutes_played;
-        $rankingValue = ($goals * 2) + ($assists * 1.5) + ($minutesPlayed / 90);
-        $newRankingValue = $rankingValue;
+        $assists = $request->assists; 
+        $minutesPlayed = $request->minsplayed; 
+        $rankingValue = $experience + ($goals * 2) + ($assists * 1.5) + ($minutesPlayed / 90);
+        $player->ranking_value = $rankingValue;
+        $player->save();
+
         $players = Player::all();
         $existingPlayers = $players->sortByDesc('ranking_value');
         $rank = 1;
-            foreach ($existingPlayers as $player) {
-                $player->rank = $rank; 
-                $player->save(); 
-                $rank++;
-            }
+        foreach ($existingPlayers as $existingPlayer) {
+            $existingPlayer->rank = $rank;
+            $existingPlayer->save(); 
+            $rank++;
         }
-
+        }
         
 
 

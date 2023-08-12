@@ -56,6 +56,8 @@ Route::put('/update_club/{club}',[ClubController::class,'update_club'])->name('u
 
 Route::get('/show_player_page',[ClubController::class,'show_player_page']);
 
+Route::get('/show_other_player_page',[ClubController::class,'show_other_player_page']);
+
 Route::get('/squad_page',[ClubController::class,'squad_page']);
 
 Route::get('/sponsor_page',[AdminController::class,'sponsor_page']);

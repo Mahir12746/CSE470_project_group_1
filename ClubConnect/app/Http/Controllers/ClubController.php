@@ -114,6 +114,23 @@ class ClubController extends Controller
     return view('club.show_player_page', compact('players'));
 }
 
+public function show_other_player_page()
+{
+    $user = Auth::user();
+    $club = Club::where('user_id', $user->id)->first();
+    $clubName = null; // Initialize clubName variable
+
+    if ($club) {
+        $clubName = $club->club_name; // Store the club_name value in the variable
+        $players = Player::where('club', '!=', $clubName)->get();
+    } else {
+        $players = Player::all();
+    }
+
+    return view('club.show_other_player_page', compact('players'));
+}
+
+
     public function squad_page()
 {
     $user = Auth::user();
@@ -143,7 +160,7 @@ public function submitBid(Request $request, $playerId)
         'bid_number' => $bidNumber,
     ]);
 
-    return redirect()->back()->with('message', 'Bid submitted successfully');
+    return redirect()->back();
 }
 
 
